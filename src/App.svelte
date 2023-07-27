@@ -2,15 +2,15 @@
 import { useUserStorage } from '@/services/storageAdapter'
 import Btn from "@/components/Btn/index.svelte"
 
-const userStore = useUserStorage()
+const userStorage = useUserStorage()
 
-$: userS = userStore.store
-$: user = $userS
+$: userStore = userStorage.store
+$: user = $userStore
 $: isLogin = !!user.id
 $: username = user.name
 
 const login = () => {
-  userStore.updateUser({
+  userStorage.updateUser({
     id: '100001',
     name: 'Jeff',
     email: 'jeff@lctech.com',
@@ -20,7 +20,7 @@ const login = () => {
 }
 
 const logout = async () => {
-  userStore.clearUser()
+  userStorage.clearUser()
   setTimeout(() => {
     window.location.href = '/'
   })

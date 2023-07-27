@@ -23,15 +23,15 @@ const emitList = {
 }
 const emit = (evtName: string, payload:any) => emitList[evtName](payload);
 
-const userStore = useUserStorage()
-const cartStore = useCartStorage()
+const userStorage = useUserStorage()
+const cartStorage = useCartStorage()
 
-$: userS = userStore.store
-$: user = $userS
+$: userStore = userStorage.store
+$: user = $userStore
 $: isLogin = !!user.id
 
-$: cartS = cartStore.store;
-$: cart = $cartS;
+$: cartStore = cartStorage.store;
+$: cart = $cartStore;
 $: productsInCart = cart?.products ?? []
 $: productsInCartLength =productsInCart.length ?? 0;
 
