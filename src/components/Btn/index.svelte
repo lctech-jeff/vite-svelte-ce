@@ -1,10 +1,14 @@
 <svelte:options customElement="j-btn" />
 
 <script lang="ts">
+const isProd = import.meta.env.PROD;
+
 </script>
 
-<!-- <link rel="stylesheet" href="/dist/"> -->
-<button type="button" class="btn"><slot>fallback</slot></button>
+{#if isProd}
+  <link rel="stylesheet" href="/dist/style.css" />
+{/if}
+<button on:click type="button" class="btn"><slot>fallback</slot></button>
 
 <style lang="postcss">
 .btn {

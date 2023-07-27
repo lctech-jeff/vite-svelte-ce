@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/assets/**/*.css', './src/components/**/*.{html,js,svelte,jsx,tsx}', './src/*.svelte'],
+  content: ['./src/assets/**/*.css', './src/components/**/*.{html,js,svelte,jsx,tsx,css}', './src/*.svelte'],
   theme: {
     screens: {
       sm: '640px',
