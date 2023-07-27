@@ -3,6 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/jeff-svelte-ce.umd.cjs",
+  "module": "./dist/jeff-svelte-ce.js",
+  "exports": {
+    ".": {
+      "import": "./dist/jeff-svelte-ce.js",
+      "require": "./dist/jeff-svelte-ce.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -12,8 +23,15 @@
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@tsconfig/svelte": "^5.0.0",
+    "@types/node": "^20.4.5",
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.27",
+    "postcss-import": "^15.1.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "svelte": "^4.0.5",
     "svelte-check": "^3.4.6",
+    "tailwindcss": "^3.3.3",
     "tslib": "^2.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
