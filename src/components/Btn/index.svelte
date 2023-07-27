@@ -4,7 +4,7 @@
 </script>
 
 <!-- <link rel="stylesheet" href="/dist/"> -->
-<button type="button" class="btn"><slot /></button>
+<button type="button" class="btn"><slot>fallback</slot></button>
 
 <style lang="postcss">
 .btn {
