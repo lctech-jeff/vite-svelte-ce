@@ -1,4 +1,4 @@
-# vite-vue-ce
+# vite-svelte-ce
 
 vite-svelte-ce 是前端整潔架構（Clean Architecture）與 web component (custom component) 的實作測試，基於 `Svelte4` 和 `Vite`。
 
