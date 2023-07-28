@@ -1,6 +1,10 @@
 <script lang="ts">
+  import Btn from '@/components/Btn/index.svelte'
+import CheckoutBtn from '@/components/CheckoutBtn/index.svelte'
+import CheckoutPanel from '@/components/CheckoutPanel/index.svelte'
+import ProductList from '@/components/ProductList/index.svelte'
+
 import { useUserStorage } from '@/services/storageAdapter'
-import Btn from "@/components/Btn/index.svelte"
 
 const userStorage = useUserStorage()
 
@@ -36,10 +40,15 @@ const handleCheckoutFailure = (payload: any[]) => {
 
 <main>
   <div>
-    <j-btn>Hi</j-btn>
-    <j-checkout-btn on:checkout-success={handleCheckoutSuccess} on:checkout-failure={handleCheckoutFailure}>
+    <CheckoutBtn on:checkout-success={() => handleCheckoutSuccess} on:checkout-failure={() => handleCheckoutFailure}>
       結帳按鈕
-    </j-checkout-btn>
+    </CheckoutBtn>
+    <div class="mt-6">
+      <CheckoutPanel title="訂單" />
+    </div>
+    <div class="mt-6">
+      <ProductList />
+    </div>
   </div>
 
   <div class="btn">

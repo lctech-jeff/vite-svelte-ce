@@ -38,10 +38,9 @@ export const useUserStore = () => {
   const store: Writable<User> = getContext(USER_STORAGE_KEY) || user
   setContext(USER_STORAGE_KEY, store)
   return {
-    user: get(store),
+    store,
     updateUser: store.set,
     clearUser: () => store.set({ ...userInit }),
-    store,
   }
 }
 
@@ -54,25 +53,23 @@ export const useCartStore = () => {
   setContext(CART_STORAGE_KEY, store)
 
   return {
-    cart: get(store),
+    store,
     updateCart: store.set,
     emptyCart: () => store.set({ ...cartInit }),
-    store,
   }
 }
 
 const ORDERS_STORAGE_KEY = 'my-order'
 const ordersInit: Order[] = []
-const orders = localStore<Order[]>(CART_STORAGE_KEY, [...ordersInit])
+const orders = localStore<Order[]>(ORDERS_STORAGE_KEY, ordersInit)
 
 export const useOrderStore = () => {
   const store: Writable<Order[]> = getContext(ORDERS_STORAGE_KEY) || orders
   setContext(ORDERS_STORAGE_KEY, store)
 
   return {
-    orders: get(orders),
-    updateOrders: store.set,
     store,
+    updateOrders: store.set,
   }
 }
 
@@ -82,7 +79,7 @@ export const useProductStore = () => {
   const cookiesList: Product[] = get(cookiesData)
 
   return {
-    cookies: cookiesList,
+    store: cookiesData,
     updateCookies,
   }
 }
