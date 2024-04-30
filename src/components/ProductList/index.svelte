@@ -1,16 +1,15 @@
 <svelte:options customElement="j-product-list" />
 
 <script lang="ts">
-  import Card from "@/components/ProductList/Card.svelte"
-import { useProductStorage } from '@/services/storageAdapter'
+  import Card from '@/components/ProductList/Card.svelte'
+  import { useProductStorage } from '@/services/storageAdapter'
 
-const isProd = import.meta.env.PROD;
+  const isProd = import.meta.env.PROD
 
-const productStorage = useProductStorage()
+  const productStorage = useProductStorage()
 
-$: productStore = productStorage.store;
-$: cookies = $productStore
-
+  $: productStore = productStorage.store
+  $: cookies = $productStore
 </script>
 
 {#if isProd}

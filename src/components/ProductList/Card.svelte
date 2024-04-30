@@ -1,36 +1,33 @@
 <script lang="ts">
-import type { Product } from '@/domain/product'
-import { hasAllergy, hasPreference } from '@/domain/user'
-import { useAddToCart } from '@/application/addToCart'
-import { useUserStorage, useCartStorage } from '@/services/storageAdapter'
+  import type { Product } from '@/domain/product'
+  import { hasAllergy, hasPreference } from '@/domain/user'
+  import { useAddToCart } from '@/application/addToCart'
+  import { useUserStorage, useCartStorage } from '@/services/storageAdapter'
 
-export let product:Product;
+  export let product: Product
 
-const userStorage = useUserStorage()
-$: userStore = userStorage.store
-$: user = $userStore
+  const userStorage = useUserStorage()
+  $: userStore = userStorage.store
+  $: user = $userStore
 
-const cartStorage = useCartStorage()
-$: cartStore = cartStorage.store;
-$: cart = $cartStore;
+  const cartStorage = useCartStorage()
+  $: cartStore = cartStorage.store
+  $: cart = $cartStore
 
-const { addToCart } = useAddToCart()
+  const { addToCart } = useAddToCart()
 
-$: productHasPreference =  product.toppings.some(v => hasPreference(user, v))
-$: productHasAllergy = product.toppings.some(v => hasAllergy(user, v))
+  $: productHasPreference = product.toppings.some(v => hasPreference(user, v))
+  $: productHasAllergy = product.toppings.some(v => hasAllergy(user, v))
 
-type icon = '⚠️' | '👍' | '';
-let iconAfterTitle:icon = "";
-$: {
-  if (productHasAllergy) {
-    iconAfterTitle = '⚠️'
+  type icon = '⚠️' | '👍' | ''
+  let iconAfterTitle: icon = ''
+  $: {
+    if (productHasAllergy) {
+      iconAfterTitle = '⚠️'
+    } else if (productHasPreference) {
+      iconAfterTitle = '👍'
+    } else iconAfterTitle = ''
   }
-  else if (productHasPreference) {
-    iconAfterTitle= '👍'
-  }
-  else iconAfterTitle= ''
-}
-
 </script>
 
 <div class="card">
@@ -47,19 +44,18 @@ $: {
 </div>
 
 <style lang="postcss">
-.card {
-  .image-wrapper {
-    @apply w-full;
-    img {
-      @apply aspect-video w-full object-cover;
+  .card {
+    .image-wrapper {
+      @apply w-full;
+      img {
+        @apply aspect-video w-full object-cover;
+      }
+    }
+    .card--footer {
+      @apply flex justify-between py-2;
+      .card-footer__detail {
+        @apply text-start;
+      }
     }
   }
-  .card--footer {
-    @apply flex justify-between py-2;
-    .card-footer__detail {
-      @apply text-start;
-    }
-  }
-}
-
 </style>

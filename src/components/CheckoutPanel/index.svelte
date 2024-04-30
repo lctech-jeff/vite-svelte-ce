@@ -2,16 +2,15 @@
 
 <script lang="ts">
   import { useOrdersStorage } from '@/services/storageAdapter'
-  
-  export let title:String = ""
-  
+
+  export let title: String = ''
+
   const ordersStorage = useOrdersStorage()
-  $: ordersStore = ordersStorage.store;
+  $: ordersStore = ordersStorage.store
   $: orders = $ordersStore
 
-  const isProd = import.meta.env.PROD;
+  const isProd = import.meta.env.PROD
 </script>
-
 
 {#if isProd}
   <link rel="stylesheet" href="/dist/style.css" />
@@ -29,10 +28,10 @@
 </div>
 
 <style lang="postcss">
-.order-list {
-  @apply grid gap-6;
-  .order-item {
-    @apply text-start;
+  .order-list {
+    @apply grid gap-6;
+    .order-item {
+      @apply text-start;
+    }
   }
-}
 </style>
