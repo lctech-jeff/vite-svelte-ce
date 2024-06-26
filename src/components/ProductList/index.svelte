@@ -4,17 +4,12 @@
   import Card from '@/components/ProductList/Card.svelte'
   import { useProductStorage } from '@/services/storageAdapter'
 
-  const isProd = import.meta.env.PROD
-
   const productStorage = useProductStorage()
 
   $: productStore = productStorage.store
   $: cookies = $productStore
 </script>
 
-{#if isProd}
-  <link rel="stylesheet" href="/dist/style.css" />
-{/if}
 <div class="list">
   {#each cookies as cookie}
     <Card product={cookie} />

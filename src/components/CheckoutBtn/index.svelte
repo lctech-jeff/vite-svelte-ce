@@ -7,8 +7,6 @@
   import type { User } from '@/domain/user'
   import type { Cart } from '@/domain/cart'
 
-  const isProd = import.meta.env.PROD
-
   type CheckoutStatus = 'success' | 'failure'
 
   const dispatch = createEventDispatcher()
@@ -61,9 +59,6 @@
   }
 </script>
 
-{#if isProd}
-  <link rel="stylesheet" href="/dist/style.css" />
-{/if}
 <div>
   <j-btn onClick={handleCheckout}><slot />&nbsp;({productsInCartLength})</j-btn>
 </div>

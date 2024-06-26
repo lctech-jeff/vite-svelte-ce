@@ -8,10 +8,9 @@ import type { Cart } from '@/domain/cart'
 import type { Product } from '@/domain/product'
 
 export const localStore = <T>(key: string, initial: T): Writable<T> => {
-  const toString = value => JSON.stringify(value, null, 2)
-  const toObj = JSON.parse
+  const toString = (value: T) => JSON.stringify(value, null, 2)
   if (localStorage.getItem(key) === null) localStorage.setItem(key, toString(initial))
-  const saved = toObj(localStorage.getItem(key))
+  const saved = JSON.parse(localStorage.getItem(key) || '')
   const { subscribe, set, update } = writable(saved)
 
   return {

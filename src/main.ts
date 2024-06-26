@@ -6,7 +6,7 @@ import '@/components/CheckoutPanel/index.svelte'
 import '@/components/ProductList/index.svelte'
 
 const app = new App({
-  target: document.getElementById('app'),
+  target: document.getElementById('app') as Element,
 })
 
 export default app

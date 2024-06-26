@@ -8,13 +8,8 @@
   const ordersStorage = useOrdersStorage()
   $: ordersStore = ordersStorage.store
   $: orders = $ordersStore
-
-  const isProd = import.meta.env.PROD
 </script>
 
-{#if isProd}
-  <link rel="stylesheet" href="/dist/style.css" />
-{/if}
 <div>
   <h1>{title}</h1>
   <div class="order-list">
